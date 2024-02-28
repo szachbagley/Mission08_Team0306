@@ -6,7 +6,10 @@ namespace Mission08_Team0306.Controllers
 {
     public class HomeController : Controller
     {
+
+
         private readonly ILogger<HomeController> _logger;
+
 
         public HomeController(ILogger<HomeController> logger)
         {
