@@ -28,7 +28,7 @@ namespace Mission08_Team0306.Models
 
         public string? DueDate { get; set; }
 
-        public int? Completed { get; set; }
+        public bool Completed { get; set; }
 
        
 

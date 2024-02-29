@@ -1,19 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Mission08_Team0306.Models;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Mission08_Team0306.Controllers
 {
     public class HomeController : Controller
     {
+        private IDataRepo _repo;
 
-
-        private readonly ILogger<HomeController> _logger;
-
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IDataRepo repo)
         {
-            _logger = logger;
+            _repo = repo;
         }
 
         public IActionResult Index()
@@ -21,20 +19,61 @@ namespace Mission08_Team0306.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Task()
+        {
+            return View(new Models.Task());
+        }
+
+        [HttpPost]
+        public IActionResult Task(Models.Task task)
+        {
+            _repo.AddTask(task);
+            return View("QudrantView");
+        }
+
         public IActionResult QuadrantView()
         {
-            return View();
+            var ToDo = _repo.Tasks
+                .Where(x => x.Completed == false)
+                .OrderBy(x => x.DueDate)
+                .ToList();
+
+            return View(ToDo);
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Edit(int id) 
         {
-            return View();
+            var taskToEdit = _repo.GetTaskById(id);
+
+            return View("Task", taskToEdit);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public IActionResult Edit(Models.Task task)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            _repo.UpdateTask(task);
+            return RedirectToAction("QuadrantView");
         }
+
+        [HttpGet] 
+        IActionResult Delete(int id)
+        {
+            var taskToDelete = _repo.GetTaskById(id);
+            return View(taskToDelete);
+        }
+
+        [HttpPost]
+        IActionResult Delete(Models.Task task)
+        {
+            _repo.DeleteTask(task);
+
+            return RedirectToAction("QuadrantView");
+        }
+
+
+
+
     }
 }
