@@ -11,6 +11,8 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:DBConnection"]);
 });
 
+builder.Services.AddScoped<IDataRepo, EFDataRepo>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
