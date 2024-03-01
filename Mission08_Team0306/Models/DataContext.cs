@@ -8,7 +8,7 @@ namespace Mission08_Team0306.Models
         { 
         }
 
-        public DbSet<Tasks> Tasks { get; set; }
+        public DbSet<Task> Tasks { get; set; }
 
         public DbSet<Quadrant> Quadrants { get; set; }
 

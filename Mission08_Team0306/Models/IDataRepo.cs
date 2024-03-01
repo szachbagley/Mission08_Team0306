@@ -2,15 +2,15 @@
 {
     public interface IDataRepo
     {
-        List<Tasks> Tasks { get; }
+        List<Task> Tasks { get; }
 
-        public Tasks GetTaskById(int id);
+        public Task GetTaskById(int id);
 
-        public void AddTask(Tasks task);
+        public void AddTask(Task task);
 
-        public void DeleteTask(Tasks task);
+        public void DeleteTask(Task task);
 
-        public void UpdateTask(Tasks task);
+        public void UpdateTask(Task task);
 
     }
 }
