@@ -72,5 +72,15 @@ namespace Mission08_Team0306.Controllers
 
             return RedirectToAction("QuadrantView");
         }
+
+        [HttpGet]
+        public IActionResult Complete(int id)
+        {
+            var taskToComplete = _repo.GetTaskById(id);
+
+            _repo.CompleteTask(taskToComplete);
+
+            return RedirectToAction("QuadrantView");
+        }
     }
 }

@@ -12,5 +12,7 @@
 
         public void UpdateTask(TaskViewModel task);
 
+        public void CompleteTask(TaskViewModel task);
+
     }
 }

@@ -36,5 +36,12 @@ namespace Mission08_Team0306.Models
             _context.Tasks.Update(task);
             _context.SaveChanges();
         }
+
+        public void CompleteTask(TaskViewModel Task)
+        {
+            var taskToComplete = _context.Tasks.Single(x => x.TaskId == Task.TaskId);
+            taskToComplete.Completed = true;
+            _context.SaveChanges();
+        }
     }
 }
