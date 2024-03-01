@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Mission08_Team0306.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -20,16 +21,16 @@ namespace Mission08_Team0306.Controllers
         }
 
         [HttpGet]
-        public IActionResult Task()
+        public IActionResult TasksView()
         {
-            return View(new Models.Task());
+            return View(new Models.TaskViewModel());
         }
 
         [HttpPost]
-        public IActionResult Task(Models.Task task)
+        public IActionResult TasksView(Models.TaskViewModel task)
         {
             _repo.AddTask(task);
-            return View("QudrantView");
+            return RedirectToAction("QuadrantView");
         }
 
         public IActionResult QuadrantView()
@@ -51,7 +52,7 @@ namespace Mission08_Team0306.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Models.Task task)
+        public IActionResult Edit(Models.TaskViewModel task)
         {
             _repo.UpdateTask(task);
             return RedirectToAction("QuadrantView");
@@ -65,15 +66,11 @@ namespace Mission08_Team0306.Controllers
         }
 
         [HttpPost]
-        IActionResult Delete(Models.Task task)
+        IActionResult Delete(Models.TaskViewModel task)
         {
             _repo.DeleteTask(task);
 
             return RedirectToAction("QuadrantView");
         }
-
-
-
-
     }
 }
