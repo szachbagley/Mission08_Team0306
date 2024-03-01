@@ -4,45 +4,115 @@
 @{
 }
 
-<div class="container">
+@model List<TaskViewModel>
+
+<div class="container-fluid">
 
     <div class="row mt-3">
         <div class="col">
-            <h1 class ="display-3">Tasks To Do</h1>
+            <h1 class="display-3">Tasks To Do</h1>
         </div>
     </div>
 
-    <div class="row mt-3">
-        <div class="col-md-2"></div>
-        <div class="col-md-5">
+    <div class="row mt-3 text-center">
+        <div class="col-2"></div>
+        <div class="col">
             <h3 class="display-5">Urgent</h3>
         </div>
-        <div class="col-md-5">
+        <div class="col">
             <h3 class="display-5">Not Urgent</h3>
         </div>
     </div>
 
+    <br />
+
     <div class="row mt-3">
-        <div class="col-md-2">
-            <h3 class="display-5">Important</h3>
+        <div class="col-2">
+            <h3 class="display-5 text-vertical">Important</h3>
         </div>
-        <div class="col-md-5">
-            <p></p>
+        <div class="col">
+            @foreach (var m in Model)
+            {
+                @if (m.QuadrantId == 1 && !m.Completed)
+                {
+                    <div class="d-flex align-items-center justify-content-between bg-light p-3 mb-2">
+                        <span>@m.TaskDescription</span>
+                        <span class="text-muted">Due: @m.DueDate</span>
+                        <div class="btn-group">
+                            <a asp-controller="Home" asp-action="Edit" asp-route-id="@m.TaskId" class="btn btn-secondary btn-sm">Edit</a>
+                            <a asp-controller="Home" asp-action="Delete" asp-route-id="@m.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                            <a asp-controller="Home" asp-action="Complete" asp-route-id="@m.TaskId" class="btn btn-success btn-sm">Completed</a>
+                        </div>
+                    </div>
+                }
+            }
         </div>
-        <div class="col-md-5">
-            <p></p>
+        <div class="col">
+            @foreach (var m in Model)
+            {
+                if (m.QuadrantId == 2 && !m.Completed)
+                {
+                    <div class="d-flex align-items-center justify-content-between bg-light p-3 mb-2">
+                        <span>@m.TaskDescription</span>
+                        <span class="text-muted">Due: @m.DueDate</span>
+                        <div class="btn-group">
+                            <a asp-controller="Home" asp-action="Edit" asp-route-id="@m.TaskId" class="btn btn-secondary btn-sm">Edit</a>
+                            <a asp-controller="Home" asp-action="Delete" asp-route-id="@m.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                            <a asp-controller="Home" asp-action="Complete" asp-route-id="@m.TaskId" class="btn btn-success btn-sm">Completed</a>
+                        </div>
+                    </div>
+                }
+            }
         </div>
     </div>
 
-    <div class="row mt-3">
-        <div class="col-md-2">
-            <h3 class="display-5">Not Important</h3>
+    <br />
+
+    <div class="row mt-3 text-center">
+        <div class="col-2">
+            <h3 class="display-5 text-vertical">Not Important</h3>
         </div>
-        <div class="col-md-5">
-            <p></p>
+        <div class="col">
+            @foreach (var m in Model)
+            {
+                if (m.QuadrantId == 3 && !m.Completed)
+                {
+                    <div class="d-flex align-items-center justify-content-between bg-light p-3 mb-2">
+                        <span>@m.TaskDescription</span>
+                        <span class="text-muted">Due: @m.DueDate</span>
+                        <div class="btn-group">
+                            <a asp-controller="Home" asp-action="Edit" asp-route-id="@m.TaskId" class="btn btn-secondary btn-sm">Edit</a>
+                            <a asp-controller="Home" asp-action="Delete" asp-route-id="@m.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                            <a asp-controller="Home" asp-action="Complete" asp-route-id="@m.TaskId" class="btn btn-success btn-sm">Completed</a>
+                        </div>
+                    </div>
+                }
+            }
         </div>
-        <div class="col-md-5">
-            <p></p>
+        <div class="col">
+            @foreach (var m in Model)
+            {
+                if (m.QuadrantId == 4 && !m.Completed)
+                {
+                    <div class="d-flex align-items-center justify-content-between bg-light p-3 mb-2">
+                        <span>@m.TaskDescription</span>
+                        <span class="text-muted">Due: @m.DueDate</span>
+                        <div class="btn-group">
+                            <a asp-controller="Home" asp-action="Edit" asp-route-id="@m.TaskId" class="btn btn-secondary btn-sm">Edit</a>
+                            <a asp-controller="Home" asp-action="Delete" asp-route-id="@m.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                            <a asp-controller="Home" asp-action="Complete" asp-route-id="@m.TaskId" class="btn btn-success btn-sm">Completed</a>
+                        </div>
+                    </div>
+                }
+            }
         </div>
     </div>
 </div>
+
+
+<style>
+    .text-vertical {
+        writing-mode: vertical-rl; /* Vertical writing mode */
+        transform: rotate(180deg); /* Rotate the text */
+    }
+</style>

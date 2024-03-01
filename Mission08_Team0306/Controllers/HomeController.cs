@@ -48,7 +48,7 @@ namespace Mission08_Team0306.Controllers
         {
             var taskToEdit = _repo.GetTaskById(id);
 
-            return View("Tasks", taskToEdit);
+            return View("TasksView", taskToEdit);
         }
 
         [HttpPost]
@@ -59,14 +59,14 @@ namespace Mission08_Team0306.Controllers
         }
 
         [HttpGet] 
-        IActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             var taskToDelete = _repo.GetTaskById(id);
             return View(taskToDelete);
         }
 
         [HttpPost]
-        IActionResult Delete(Models.TaskViewModel task)
+        public IActionResult Delete(Models.TaskViewModel task)
         {
             _repo.DeleteTask(task);
 
