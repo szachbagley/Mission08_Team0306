@@ -23,11 +23,11 @@ namespace Mission08_Team0306.Controllers
         [HttpGet]
         public IActionResult TasksView()
         {
-            return View(new Models.TaskViewModel());
+            return View(new TaskViewModel());
         }
 
         [HttpPost]
-        public IActionResult TasksView(Models.TaskViewModel task)
+        public IActionResult TasksView(TaskViewModel task)
         {
             _repo.AddTask(task);
             return RedirectToAction("QuadrantView");
@@ -52,7 +52,7 @@ namespace Mission08_Team0306.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Models.TaskViewModel task)
+        public IActionResult Edit(TaskViewModel task)
         {
             _repo.UpdateTask(task);
             return RedirectToAction("QuadrantView");
@@ -66,7 +66,7 @@ namespace Mission08_Team0306.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Models.TaskViewModel task)
+        public IActionResult Delete(TaskViewModel task)
         {
             _repo.DeleteTask(task);
 
