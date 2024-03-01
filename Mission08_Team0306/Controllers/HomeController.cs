@@ -72,9 +72,5 @@ namespace Mission08_Team0306.Controllers
 
             return RedirectToAction("QuadrantView");
         }
-
-
-
-
     }
 }
