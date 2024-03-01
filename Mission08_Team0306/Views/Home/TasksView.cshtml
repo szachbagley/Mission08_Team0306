@@ -4,25 +4,30 @@
 
 @model TaskViewModel
 
-<h1>@ViewData["Title"]</h1>
+<h1>@ViewData["Title"]</h1
 
+@* This is the form for the user to enter their task information *@
 <div class="container-fluid">
     <form method="post">
+        @* This is the hidden taskid so records can be edited and deleted *@
         <input type="hidden" asp-for="TaskId"/>
         <div class="row">
             <div class="col-md-6">
+                @* the task description/name must be entered by user *@
                 <div class="form-group">
                     <label asp-for="TaskDescription" class="control-label">Task:<span style="color: red;">*</span></label>
                     <input asp-for="TaskDescription" class="form-control" />
                     <span asp-validation-for="TaskDescription" class="text-danger"></span>
                 </div>
 
+                @* The date the task needs to be completed by *@
                 <div class="form-group">
                     <label asp-for="DueDate" class="control-label">Due Date:</label>
                     <input asp-for="DueDate" class="form-control" type="date" />
                     <span asp-validation-for="DueDate" class="text-danger"></span>
                 </div>
 
+                @* The quadrant the task needs to go into *@
                 <div class="form-group">
                     <label asp-for="QuadrantId" class="control-label">Quadrant:<span style="color: red;">*</span></label>
                     <select asp-for="QuadrantId" class="form-control">
@@ -35,6 +40,7 @@
                     <span asp-validation-for="QuadrantId" class="text-danger"></span>
                 </div>
             </div>
+            @* the category the task falls into *@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="CategoryId" class="control-label">Category:</label>
@@ -48,6 +54,7 @@
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </div>
 
+                @* whether or not the task is completed *@
                 <div class="form-group">
                     <label asp-for="Completed" class="control-label">Completed:</label>
                     <select asp-for="Completed" class="form-control">
@@ -58,6 +65,8 @@
                 </div>
             </div>
         </div><br />
+
+        @* the button to submit the form *@
         <div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

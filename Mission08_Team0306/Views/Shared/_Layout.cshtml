@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+    @* all the header information including bootstrap to make the site look dope and professional *@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,8 +9,10 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Mission08_Team0306.styles.css" asp-append-version="true" />
 </head>
+@* body layout, the basic layout of every page *@
 <body>
     <header>
+        @* navigation bar *@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="QuadrantView">Mission08_Team0306</a>
@@ -17,6 +20,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                @* navigation to the other pages on the site like the form and the quadrants *@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -30,12 +34,14 @@
             </div>
         </nav>
     </header>
+    @* calls the renderbody funtion to insert the main html from the desired view *@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
+    @* the footer layout that will appear on each page *@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - Mission08_Team0306 - <a asp-area="" asp-controller="Home" asp-action="TasksView">Add Tasks</a>
