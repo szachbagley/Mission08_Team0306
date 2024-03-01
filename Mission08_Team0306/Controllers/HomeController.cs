@@ -47,7 +47,7 @@ namespace Mission08_Team0306.Controllers
         {
             var taskToEdit = _repo.GetTaskById(id);
 
-            return View("Task", taskToEdit);
+            return View("Tasks", taskToEdit);
         }
 
         [HttpPost]
