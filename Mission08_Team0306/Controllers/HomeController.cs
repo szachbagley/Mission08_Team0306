@@ -26,6 +26,7 @@ namespace Mission08_Team0306.Controllers
             return View(new TaskViewModel());
         }
 
+        //Adds a task through EFDataRepo.cs
         [HttpPost]
         public IActionResult TasksView(TaskViewModel task)
         {
@@ -33,16 +34,19 @@ namespace Mission08_Team0306.Controllers
             return RedirectToAction("QuadrantView");
         }
 
+        //Loads qudrants with tasks that are not completed
         public IActionResult QuadrantView()
         {
             var ToDo = _repo.Tasks
                 .Where(x => x.Completed == false)
-                .OrderBy(x => x.DueDate)
+                .OrderBy(x => x.DueDate) //ordered by due date
                 .ToList();
 
             return View(ToDo);
         }
 
+
+        //retrieves tasks by ID number and loads them in the editor
         [HttpGet]
         public IActionResult Edit(int id) 
         {
@@ -51,6 +55,7 @@ namespace Mission08_Team0306.Controllers
             return View("TasksView", taskToEdit);
         }
 
+        //loads the editor with desired task
         [HttpPost]
         public IActionResult Edit(TaskViewModel task)
         {
@@ -58,6 +63,7 @@ namespace Mission08_Team0306.Controllers
             return RedirectToAction("QuadrantView");
         }
 
+        //sends task to Delete view for confrimation
         [HttpGet] 
         public IActionResult Delete(int id)
         {
@@ -65,6 +71,7 @@ namespace Mission08_Team0306.Controllers
             return View(taskToDelete);
         }
 
+        //deletes task after confirmed deletion
         [HttpPost]
         public IActionResult Delete(TaskViewModel task)
         {
@@ -73,6 +80,7 @@ namespace Mission08_Team0306.Controllers
             return RedirectToAction("QuadrantView");
         }
 
+        //Marks a task as complete and sends user back to quadrant page
         [HttpGet]
         public IActionResult Complete(int id)
         {
