@@ -21,16 +21,16 @@ namespace Mission08_Team0306.Controllers
         }
 
         [HttpGet]
-        public IActionResult Task()
+        public IActionResult TasksView()
         {
             return View(new Models.TaskViewModel());
         }
 
         [HttpPost]
-        public IActionResult Task(Models.TaskViewModel task)
+        public IActionResult TasksView(Models.TaskViewModel task)
         {
             _repo.AddTask(task);
-            return View("QudrantView");
+            return RedirectToAction("QuadrantView");
         }
 
         public IActionResult QuadrantView()
