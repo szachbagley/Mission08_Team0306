@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission08_Team0306.Models
 {
+    // Connect the tasks table to our .NET
     public class TaskViewModel
     {
         [Key]

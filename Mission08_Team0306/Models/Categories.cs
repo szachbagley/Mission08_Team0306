@@ -5,6 +5,7 @@ namespace Mission08_Team0306.Models
 {
     public class Categories
     {
+        // Put the data down below for the cateogories table
 
         [Key]
         [Required]

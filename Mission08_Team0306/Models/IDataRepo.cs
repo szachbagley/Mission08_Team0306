@@ -1,5 +1,6 @@
 ﻿namespace Mission08_Team0306.Models
 {
+    // Finish connecting the repository
     public interface IDataRepo
     {
         List<TaskViewModel> Tasks { get; }
